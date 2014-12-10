@@ -1,0 +1,49 @@
+....FF..F.F......
+
+Failures:
+
+  1) Unixoid test 5. should have the list of env vars that begin with T in t-vars.env
+     Failure/Error: expect(lines.map{|l| l[0]}.uniq).to eq(['T'])
+       
+       expected: ["T"]
+            got: []
+       
+       (compared using ==)
+     # ./unixoid_spec.rb:24:in `block (2 levels) in <top (required)>'
+
+  2) Unixoid test 6. should have the TESTING_MAKERS env variable set up
+     Failure/Error: expect(ENV["TESTING_MAKERS"]).to eq('working')
+       
+       expected: "working"
+            got: nil
+       
+       (compared using ==)
+     # ./unixoid_spec.rb:28:in `block (2 levels) in <top (required)>'
+
+  3) Unixoid test 8b. should have the count of env vars in my/public/files/t-vars.count
+     Failure/Error: expect(File.read('my/public/files/t-vars.count')).to match(/^Overall count:\s+\d+\s*$/i)
+       expected "       6\n" to match /^Overall count:\s+\d+\s*$/i
+       Diff:
+       @@ -1,2 +1,2 @@
+       -/^Overall count:\s+\d+\s*$/i
+       +       6
+     # ./unixoid_spec.rb:41:in `block (2 levels) in <top (required)>'
+
+  4) Unixoid test 10. should only allow the owner to change into my/private/files
+     Failure/Error: expect(permissions & 0000010).to eq(0)
+       
+       expected: 0
+            got: 8
+       
+       (compared using ==)
+     # ./unixoid_spec.rb:54:in `block (2 levels) in <top (required)>'
+
+Finished in 0.00577 seconds (files took 0.12091 seconds to load)
+17 examples, 4 failures
+
+Failed examples:
+
+rspec ./unixoid_spec.rb:20 # Unixoid test 5. should have the list of env vars that begin with T in t-vars.env
+rspec ./unixoid_spec.rb:27 # Unixoid test 6. should have the TESTING_MAKERS env variable set up
+rspec ./unixoid_spec.rb:40 # Unixoid test 8b. should have the count of env vars in my/public/files/t-vars.count
+rspec ./unixoid_spec.rb:50 # Unixoid test 10. should only allow the owner to change into my/private/files
